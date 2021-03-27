@@ -1,0 +1,9 @@
+timeout: 500
+refresh: 20
+
+turnbased: False
+
+init: [int x1, int y1, int t1, int x2, int y2, int t2, int xt, int yt, int Xo(20), int Yo(20), int height, int width]
+input: [std::string action]
+feedback: [int x, int y, int t, std::vector<int> Xs, std::vector<int> Ys, std::vector<bool> Os, int dist]
+display : [int x1, int y1, int t1, int x2, int y2, int t2, int Xs1(1001), int Ys1(1001),  int Xs2(1001), int Ys2(1001)]
