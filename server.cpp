@@ -7,6 +7,7 @@
 #include <duels/server.h>
 #endif
 #include "Boat_game.h"
+#include"AI.h"
 
 using duels::Player;
 using namespace duels::treasure_hunt;
@@ -30,6 +31,8 @@ int main(int argc, char** argv)
   // build initial game state
 
   Grid G = Grid();
+  level1_IA thiery;
+  level1_IA roger;
 
 
   // build init message for display
@@ -125,39 +128,42 @@ int main(int argc, char** argv)
 
 #else
       // write dumb player AI from feedback1 to input1
-    srand (time(NULL));
-          int r=rand()%4;
+//    srand (time(NULL)+G.b2.t+G.b2.x+50);
+//          int r=rand()%4;
+//          r = 1;
+//          if (r==0){
+//              input1.action="sonar";
+//          }
+//          if (r==1){
+//              input1.action="turn_l";
+//          }
+//          if (r==2){
+//              input1.action="move";
+//          }
+//          if (r==3){
+//              input1.action="turn_r";
+//          }
+    input1.action = thiery.send_input(feedback1);
 
-          if (r==0){
-              input1.action="sonar";
-          }
-          if (r==1){
-              input1.action="turn_l";
-          }
-          if (r==2){
-              input1.action="move";
-          }
-          if (r==3){
-              input1.action="turn_r";
-          }
 
 #endif
 
       // artificial opponent: put your AI here      
-          srand (time(NULL)+4);
-               r=rand()%4;
-               if (r==0){
-                   input2.action="sonar";
-               }
-               if (r==1){
-                   input2.action="turn_l";
-               }
-               if (r==2){
-                   input2.action="move";
-               }
-               if (r==3){
-                   input2.action="turn_r";
-               }
+//          srand (time(NULL)+G.b1.t+G.b1.x);
+//               r=rand()%4;
+//               if (r==0){
+//                   input2.action="sonar";
+//               }
+//               if (r==1){
+//                   input2.action="turn_l";
+//               }
+//               if (r==2){
+//                   input2.action="move";
+//               }
+//               if (r==3){
+//                   input2.action="turn_r";
+//               }
+        input2.action = roger.send_input(feedback2);
 
                
 

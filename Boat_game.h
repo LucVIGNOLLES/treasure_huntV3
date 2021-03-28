@@ -14,8 +14,6 @@ using namespace std;
 using duels::Player;
 using namespace duels::treasure_hunt;
 
-int const NB_OBS = 136;
-
 bool Is_free(int x,int y, int X[NB_OBS], int Y[NB_OBS]);
 bool Is_In(int x, int y, vector<int> X, vector<int> Y);
 
@@ -41,7 +39,7 @@ public:
         t=rand()%4;
         x=rand()%width;
         y=rand()%height;
-        while (Is_free(x, y, Xo, Yo)==false){
+        while (!Is_free(x, y, Xo, Yo)){
             x=rand()%width;
             y=rand()%height;
         }
@@ -78,6 +76,8 @@ public:
         x_treasure=rand()%width;
         y_treasure=rand()%height;
 
+        Create_Obstacles();
+
         while (!Is_free(x_treasure, y_treasure, Xo, Yo))
         {
             x_treasure=rand()%width;
@@ -86,8 +86,6 @@ public:
 
         b1=Boat(width, height, Xo, Yo, 0);
         b2=Boat(width, height, Xo, Yo, 1);
-
-        Create_Obstacles();
     };
     void Create_Obstacles();
     feedbackMsg Create_feedback(Boat b);
